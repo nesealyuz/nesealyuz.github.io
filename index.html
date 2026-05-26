@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nese Alyuz Civitci | Research Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Core Styling & Color Palette (Dark Theme) */
+        :root {
+            --primary-color: #f0f6fc;
+            --secondary-color: #8b949e;
+            --accent-color: #58a6ff;
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --border-color: #30363d;
+            --tag-bg: #1f2428;
+            --tag-text: #79c0ff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+            font-size: 2.8rem;
+        }
+
+        h2.subtitle {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Intro Paragraph */
+        .intro {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        /* Category Sections */
+        .project-category {
+            margin-top: 4rem;
+        }
+
+        h2.category-title {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .date-row {
+            display: block; 
+            font-size: 18px; 
+            font-style: normal; 
+            margin-top: 5px; 
+            color: var(--secondary-color);
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Project Card (For Grid) */
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+            border-color: #58a6ff;
+        }
+
+        /* List Card (For Patents/Awards) */
+        .list-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+        }
+
+        .simple-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .simple-list li {
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .simple-list li:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .list-item-title {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .list-item-meta {
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.8rem;
+        }
+
+        /* Image Handling */
+        .project-image {
+            width: 100%;
+            height: 200px; 
+            overflow: hidden;
+            background-color: #ffffff; /* Keeps images with white backgrounds looking normal */
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Card Content */
+        .project-content {
+            padding: 1.8rem;
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            margin-top: 0;
+            margin-bottom: 0.6rem;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+        }
+
+        .project-tags {
+            margin-bottom: 1.2rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-right: 8px;
+            font-weight: 500;
+            border: 1px solid #30363d;
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            flex-grow: 1; 
+        }
+
+        /* Action Links */
+        .links a {
+            display: inline-block;
+            margin-right: 18px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .pub-link::before { content: '📄 '; }
+        .repo-link::before { content: '💻 '; }
+        .patent-link::before { content: '💡 '; }
+        .award-link::before { content: '🏆 '; }
+
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 3rem 0;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Nese Alyuz Civitci, PhD</h1>
+            <h2 class="subtitle">Senior AI Researcher</h2>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/nese-alyuz-civitci" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/nesealyuz" target="_blank">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+                <a href="https://scholar.google.com/citations?hl=en&user=I5yW7SgAAAAJ" target="_blank">
+                    <i class="fa-solid fa-graduation-cap"></i> Google Scholar
+                </a>
+            </div>
+        </header>
+
+        <p class="intro">I am a senior AI researcher with 10+ years of industry experience in applied machine learning, 
+            deep learning, experimentation, quantitative analysis, and human-centered AI. I have worked on a wide range of high-impact real-world initiatives, covering modeling, validation, 
+            and deployment of end-to-end machine learning systems. </p>
+
+        <main>
+            <section class="project-category">
+                <h2 class="category-title">Independent Research 
+                    <span class="date-row"><i>[2026 - present]</i></span></h2>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/sepsis.png" alt="Placeholder visualization of clinical predictive model data">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Early Prediction of Sepsis Onset in ICU Patients</h4>
+                            <div class="project-tags">
+                                <span class="tag">PyTorch</span>
+                                <span class="tag">GCP</span>
+                                <span class="tag">Big Query</span>
+                                <span class="tag">vLLMs</span>
+                            </div>
+                            <p class="project-description">
+                            Architected an end-to-end, multimodal machine learning pipeline for the early prediction of sepsis onset in ICU patients utilizing the MIMIC-IV dataset. 
+                            Engineered robust data pipelines that integrated high-resolution tabular physiological data with complex unstructured clinical notes, 
+                            leveraging vLLM BioMistral for rapid text distillation and ClinicalBERT for dense embedding generation.
+                            Conducted rigorous experimental design, including comprehensive ablation studies with swappable backbones (GRU, TCN, Transformers) 
+                            under realistic clinical constraints (e.g., 0-hour vs. 6-hour blackout windows).                         
+                            Demonstrated that fusing temporal tabular sequences with text embeddings improves predictive accuracy and clinical robustness.    
+                            </p>
+                            <div class="links">
+                                <a href="https://github.com/nesealyuz/sepsis-onset-early-prediction/tree/main" class="repo-link" target="_blank">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="project-category">
+                <h2 class="category-title">Industry Research @ Intel Labs 
+                     <span class="date-row"><i>[2015 - 2025]</i></span></h2>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/yield_dash.png" alt="Placeholder image related to AI system research at Intel">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">AI for Yield: Prediction & Optimization</h4>
+                            <div class="project-tags">
+                                <span class="tag">Statistical ML</span>
+                                <span class="tag">Pairwise Signal Ranking</span>
+                                <span class="tag">mRMR Adaptation</span>
+                            </div>
+                            <p class="project-description">Delivered ML-driven systems generating over $1B in measured business impact. 
+                            Built end-to-end ML workflows spanning the complete project lifecycle from data ingestion and feature engineering to iterative machine learning model training and evaluation. 
+                            Created novel signal scoring and ranking frameworks that elevated downstream relevance metrics and transformed raw data into actionable, high-level business decisions.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/fake_catcher.png" alt="Placeholder image related to AI system research at Intel">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">AI for Trust: Trusted Media</h4>
+                            <div class="project-tags">
+                                <span class="tag">Deepfakes</span>
+                                <span class="tag">Human Perception</span>
+                                <span class="tag">UX Research</span>
+                                <span class="tag">Statistical Analysis</span>
+                            </div>
+                            <p class="project-description">
+                                Co-led quantitative user research evaluating human perception of deepfakes and identifying key explainability requirements for a trustworthy detection systems. 
+                                Executed rigorous statistical analyses to benchmark human detection accuracy and identify significant influence factors. Evaluated explainability elements that are critical for building user trust.
+                                Translated empirical findings into actionable mitigation strategies, addressing data annotation bias, the necessity of human-AI collaboration and public awareness. 
+                            </p>     
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/kidspace_home_school.png" alt="Placeholder image related to AI system research at Intel">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">AI for Education: Kid Space</h4>
+                            <div class="project-tags">
+                                <span class="tag">Behavioral Analysis</span>
+                                <span class="tag">Affective Computing</span>
+                                <span class="tag">UX Research</span>
+                                <span class="tag">Statistical Analysis</span>
+                            </div>
+                            <p class="project-description">Directed quantitative UX research for the Kid Space initiative, 
+                                designing and executing analyses for multiple in-the-wild user studies to evaluate complex behavioral hypotheses. 
+                                Employed rigorous statistical modeling to analyze parental concerns as well as the multidimensional learner engagement, 
+                                encompassing behavioral and emotional states, physical and social interactions, and collaborative problem-solving dynamics. 
+                                Translated these empirical findings into evidence-based insights to validate core assumptions and optimize the learning experience.</p>
+                            <div class="links">
+                                <a href="https://www.sciencedirect.com/science/article/pii/S2666920X25000335" class="pub-link" target="_blank">Comp&Ed'25</a>
+                                <a href="https://www.researchgate.net/profile/Sinem-Aslan-4/publication/374799084_What_is_the_impact_of_a_multi-modal_pedagogical_conversational_AI_system_on_parents%27_concerns_about_technology_use_by_young_children/links/68dd99fe220a341aa151ddf2/What-is-the-impact-of-a-multi-modal-pedagogical-conversational-AI-system-on-parents-concerns-about-technology-use-by-young-children.pdf" class="pub-link" target="_blank">BJET'24</a>
+                                <a href="https://www.sciencedirect.com/science/article/pii/S2666920X24000213" class="pub-link" target="_blank">Comp&Ed'24</a>
+                                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8741584/pdf/11423_2021_Article_10072.pdf" class="pub-link" target="_blank">ETR&D'22</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/ale_overview.png" alt="AdaptLE Multimodal Engagement Detection">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">AI for Education: Adaptive Learning</h4>
+                            <div class="project-tags">
+                                <span class="tag">Affective Computing</span>
+                                <span class="tag">Behavioral Analysis</span>
+                                <span class="tag">Multimodal ML</span>
+                                <span class="tag">A/B Testing</span>
+                            </div>
+                            <p class="project-description">Served as the technical lead for a real-time, multimodal student engagement analytics framework. 
+                                Directed the complete machine learning pipeline, encompassing system design, data architecture, feature engineering, and large-scale machine learning model training. 
+                                Ensured system robustness and generalizability through rigorous experimental design, combining offline metric validation with online A/B testing prior to deployment.</p>
+                            <div class="links">
+                                <a href="https://www.researchgate.net/profile/Sinem-Aslan-4/publication/352305650_Annotating_Student_Engagement_Across_Grades_1-12_Associations_with_Demographics_and_Expressivity/links/617805c5a767a03c14b6c9d8/Annotating-Student-Engagement-Across-Grades-1-12-Associations-with-Demographics-and-Expressivity.pdf" class="pub-link" target="_blank">AIED'21</a>
+                                <a href="https://dl.acm.org/doi/pdf/10.1145/3290605.3300534" class="pub-link" target="_blank">CHI'19</a>
+                                <a href="https://d1wqtxts1xzle7.cloudfront.net/66236261/ETR_D_paper_2018-libre.pdf?1618152024=&response-content-disposition=inline%3B+filename%3DEffect_of_emotion_aware_interventions_on.pdf" class="pub-link" target="_blank">ETR&D'18</a>
+                                <a href="https://dl.acm.org/doi/pdf/10.1145/3139513.3139521" class="pub-link" target="_blank">MIE'17</a>
+                                <a href="https://www.researchgate.net/profile/Eda-Okur/publication/318155568_Behavioral_Engagement_Detection_of_Students_in_the_Wild/links/6241f13821077329f2dd2b34/Behavioral-Engagement-Detection-of-Students-in-the-Wild.pdf" class="pub-link" target="_blank">AIED'17</a>
+                                <a href="https://d1wqtxts1xzle7.cloudfront.net/50013872/PALE2-libre.pdf?1477945998=&response-content-disposition=inline%3B+filename%3DTowards_an_emotional_engagement_model_Ca.pdf" class="pub-link" target="_blank">UMAP'16</a>
+                                <a href="https://dl.acm.org/doi/pdf/10.1145/2993148.2993166" class="pub-link" target="_blank">ICMI'16</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/help2.png" alt="Placeholder image related to AI system research at Intel">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">HELP: Human-Expert Labeling Protocol</h4>
+                            <div class="project-tags">
+                                <span class="tag">Data Annotation</span>
+                                <span class="tag">Affective Computing</span>
+                                <span class="tag">Behavioral Analysis</span>
+                            </div>
+                            <p class="project-description">Co-developed the Human Expert Labeling Process (HELP), a standardized observational methodology designed to accurately classify and quantify complex, higher-order user states. 
+                                Architected an end-to-end annotation pipeline encompassing coder recruitment, active labeling, and rigorous statistical validation. 
+                                Initially engineered to capture engagement in learning environments, the framework demonstrated high generalizability and was successfully adapted to model diverse user behaviors across multiple domains.</p>
+                            <div class="links">
+                                <a href="https://www.researchgate.net/profile/Eda-Okur/publication/325851297_Role_of_Socio-cultural_Differences_in_Labeling_Students%27_Affective_States/links/6241f4388068956f3c54e94e/Role-of-Socio-cultural-Differences-in-Labeling-Students-Affective-States.pdf" class="pub-link" target="_blank">AIED'18</a>
+                                <a href="https://d1wqtxts1xzle7.cloudfront.net/81342636/HCII_Eda-libre.pdf?1645710322=&response-content-disposition=inline%3B+filename%3DTowards_Human_Affect_Modeling_A_Comparat.pdf" class="pub-link" target="_blank">HCI'18</a>
+                                <a href="https://repositorio.tec.mx/server/api/core/bitstreams/3b8cf593-46db-46e5-878a-50e1f0b679e3/content#page=71" class="pub-link" target="_blank">MISTEL'18</a>
+                                <a href="https://www.jstor.org/stable/44430540" class="pub-link" target="_blank">EdTech'17</a>
+                                <a href="http://its2016.its-conferences.com/wp-content/uploads/Workshop-Proceedings.pdf" class="pub-link" target="_blank">ITS-W'16</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/auto.png" alt="Emotions in Automated Driving">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Emotional Understanding for Automated Driving</h4>
+                            <div class="project-tags">
+                                <span class="tag">Behavioral Analysis</span>
+                                <span class="tag">Affective Computing</span>
+                                <span class="tag">Automated Driving</span>                                
+                            </div>
+                            <p class="project-description"> 
+                            Foundational methodology towards emotional understanding in automated vehicles.
+                            Studied emotional reactions of driver-passenger dyads through simulation for emotion induction. 
+                            Developed a reliable context-specific emotion labeling process. 
+                            </p>
+                            <div class="links">
+                                <a href="https://ieeexplore.ieee.org/abstract/document/8373886" class="pub-link" target="_blank">FG'18</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/whisper_chat2.png" alt="Whisper chat">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Whisper Chat: Contextual Voice Changes in Remote Meetings</h4>
+                            <div class="project-tags">
+                                <span class="tag">Behavioral Analysis</span>
+                                <span class="tag">Statistical Analysis</span>
+                                <span class="tag">Remote Collaboration</span>
+                            </div>
+                            <p class="project-description">Quantitative user experience research to analyze voice changes and the respective perceptions during remote meetings held in shared spaces.
+                                Conducted statistical analysis on user study to understand preferences for voice concealing in public spaces and how it impacts quality and perception. 
+                                Synthesized findings to influence AI product roadmap and feature prioritization, enabling alignment between development and actual needs.</p>
+                            <div class="links">
+                                <a href="https://www.isca-archive.org/interspeech_2021/maruri21_interspeech.pdf" class="pub-link" target="_blank">Interspeech'21</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="project-category">
+                <h2 class="category-title">Academic Research 
+                     <span class="date-row"><i>[2006 - 2015]</i></span></h2>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/asci_merged2.png" alt="ASC-Inclusion">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Interpretable ML for Formative Feedback Generation</h4>
+                            <div class="project-tags">
+                                <span class="tag">ASC</span>
+                                <span class="tag">Explainable AI</span>
+                                <span class="tag">Kernel Density</span>
+                            </div>
+                            <p class="project-description">Semantically meaningful formative feedback generation through explainability of models. 
+                                Generalized approach that can work on different expressive modalities of face, voice, and gesture. 
+                                Providing actionable feedback to children with Autism Spectrum Conditions (ASC) while they are learning how to perform emotional cues. </p>
+                            <div class="links">
+                                <a href="https://openaccess.thecvf.com/content_CVPRW_2019/papers/Explainable%20AI/Alyuz_Interpretable_Machine_Learning_for_Generating_Semantically_Meaningful_Formative_Feedback_CVPRW_2019_paper.pdf" class="pub-link" target="_blank">CVPR-W'19</a>
+                                <a href="https://ieeexplore.ieee.org/abstract/document/8430561" class="pub-link" target="_blank">Trans. on Games'18</a>
+                                <a href="https://mediatum.ub.tum.de/doc/1253787/document.pdf" class="pub-link" target="_blank">IUI'15</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/recognition.png" alt="3D face recognition">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Robust 3D Face Recognition under Adversarial Conditions</h4>
+                            <div class="project-tags">
+                                <span class="tag">3D Face</span>
+                                <span class="tag">Masked Projection</span>
+                                <span class="tag">GraphCuts</span>
+                            </div>
+                            <p class="project-description">Research and development of 3d face recognition techniques
+                                 that can handle adverse conditions of facial occlusions and expression variations in a robust manner.
+                                 Generalized approach that can detect highly deformed regions for elimination.
+                                 Masked projection to handle dimensionality reduction on incomplete data without additional training. 
+                                </p>
+                            <div class="links">
+                                <a href="https://ieeexplore.ieee.org/abstract/document/6976784/" class="pub-link" target="_blank">ICPR'14</a>
+                                <a href="https://www.researchgate.net/profile/Berk-Gokberk/publication/236848193_3-D_Face_Recognition_Under_Occlusion_Using_Masked_Projection/links/0deec5196251603922000000/3-D-Face-Recognition-Under-Occlusion-Using-Masked-Projection.pdf" class="pub-link" target="_blank">Trans. on IFS'13</a>
+                                <a href="https://ieeexplore.ieee.org/abstract/document/6199767/" class="pub-link" target="_blank">ICB'12</a>   
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/registration.png" alt="3D face registration">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">3D Face Registration under Adversarial Conditions</h4>
+                            <div class="project-tags">
+                                <span class="tag">3D Face</span>
+                                <span class="tag">Occlusions</span>
+                                <span class="tag">Expressions</span>
+                            </div>
+                            <p class="project-description">Research and development of 3D facial surface registration techniques, 
+                                with the aim of robustness under adverse conditions. 
+                                Multiple average face models to handle gender and race variations. 
+                                Patch-based modeling towards a generic approach that could handle both facial occlusions and expression variations.
+                            </p>
+                            <div class="links">
+                                <a href="https://link.springer.com/chapter/10.1007/978-3-642-33885-4_56" class="pub-link" target="_blank">ECCV'12</a>
+                                <a href="https://www.researchgate.net/profile/Berk-Gokberk/publication/224148516_Regional_Registration_for_Expression_Resistant_3-D_Face_Recognition/links/0a85e531e3465537a0000000/Regional-Registration-for-Expression-Resistant-3-D-Face-Recognition.pdf" class="pub-link" target="_blank">Trans. on IFS'10</a>
+                                <a href="https://books.google.com/books?hl=en&lr=&id=7fUYTiRmFhsC&oi=fnd&pg=PA217&dq=info:PvM4JMGRaeQJ:scholar.google.com&ots=y3EQADYiv-&sig=b5JkPr_dumkPO51j1thvExmFmmU" class="pub-link" target="_blank">Handbook of Remote Biometrics'09</a>
+                                <a href="https://www.academia.edu/download/40636056/A_3D_Face_Recognition_System_for_Express20151204-3498-1mtr509.pdf" class="pub-link" target="_blank">ICB'08</a>
+                                <a href="https://www.cs.bilkent.edu.tr/~dibeklioglu/documents/fg2008.pdf" class="pub-link" target="_blank">FG'08</a>
+                                <a href="https://webspace.science.uu.nl/~salah006/salah08jei.pdf" class="pub-link" target="_blank">Journal of EI'08</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="project-category">
+                <h2 class="category-title">Patents</h2>
+                <div class="list-card">
+                    <ul class="simple-list">
+                        <li>
+                            <div class="list-item-title">Methods and Apparatus for Identifying Food Chewed and/or Beverage Drank</div>
+                            <div class="list-item-meta">Behavioral Modeling </div>
+                            <div class="links"><a href="https://patentimages.storage.googleapis.com/57/74/ba/5385de22dffc40/US11013430.pdf" class="patent-link" target="_blank">View Patent</a></div>
+                        </li>    
+                        <li>
+                            <div class="list-item-title">Technologies for Emotion Prediction based on Breathing Patterns</div>
+                            <div class="list-item-meta">Behavioral Modeling • Affective Computing </div>
+                            <div class="links"><a href="https://patentimages.storage.googleapis.com/e8/01/6d/444bbea881bede/US11006875.pdf" class="patent-link" target="_blank">View Patent</a></div>
+                        </li>       
+                        <li>
+                            <div class="list-item-title">Engagement Level Determination and Dissemination</div>
+                            <div class="list-item-meta">AI for Education • Behavioral Modeling • Affective Computing </div>
+                            <div class="links"><a href="https://patentimages.storage.googleapis.com/6e/14/c2/94610284ebd01b/US11908345.pdf" class="patent-link" target="_blank">View Patent</a></div>
+                        </li>                        
+                        <li>
+                            <div class="list-item-title">Side Face Image-based Mental State Determination</div>
+                            <div class="list-item-meta">Behavioral Modeling • Affective Computing </div>
+                            <div class="links"><a href="https://patentimages.storage.googleapis.com/b4/90/fb/015f34ad1a2846/US10299716.pdf" class="patent-link" target="_blank">View Patent</a></div>
+                        </li>
+                        <li>
+                            <div class="list-item-title">User State Model Adaptation through Machine Driven Labeling</div>
+                            <div class="list-item-meta">Behavioral Modeling • Affective Computing • Personalization</div>
+                            <div class="links"><a href="https://patentimages.storage.googleapis.com/37/4f/e7/1d35a6a9b0cad0/US20170169715A1.pdf" class="patent-link" target="_blank">View Patent</a></div>
+                        </li>
+                        <li>
+                            <div class="list-item-title">System and Method for Identifying Learner Engagement States</div>
+                            <div class="list-item-meta">AI for Education • Behavioral Modeling • Affective Computing</div>
+                            <div class="links"><a href="https://patentimages.storage.googleapis.com/08/7e/2c/6a23d71a4b3f9f/US20170039876A1.pdf" class="patent-link" target="_blank">View Patent</a></div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </section>
+
+            <section class="project-category">
+                <h2 class="category-title">Publication Awards</h2>
+                <div class="list-card">
+                    <ul class="simple-list">
+                        <li>
+                            <div class="list-item-title">Systems Thinking and Change Award: Outstanding Publication</div>
+                            <div class="list-item-meta">Association for Educational Communications and Technology (AECT) • 2025</div>
+                            <div class="links"><a href="https://www.researchgate.net/profile/Sinem-Aslan-4/publication/374799084_What_is_the_impact_of_a_multi-modal_pedagogical_conversational_AI_system_on_parents%27_concerns_about_technology_use_by_young_children/links/68dd99fe220a341aa151ddf2/What-is-the-impact-of-a-multi-modal-pedagogical-conversational-AI-system-on-parents-concerns-about-technology-use-by-young-children.pdf" class="award-link" target="_blank">View Paper</a></div>
+                        </li>
+                        <li>
+                            <div class="list-item-title">Learner Engagement Award: Outstanding Publication</div>
+                            <div class="list-item-meta">Association for Educational Communications and Technology (AECT) • 2024</div>
+                            <div class="links"><a href="https://www.sciencedirect.com/science/article/pii/S2666920X24000213" class="award-link" target="_blank">View Paper</a></div>
+                        </li>
+                        <li>
+                            <div class="list-item-title">Learner Engagement Award: Excellence in Innovation</div>
+                            <div class="list-item-meta">Association for Educational Communications and Technology (AECT) • 2021</div>
+                            <div class="links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8741584/pdf/11423_2021_Article_10072.pdf" class="award-link" target="_blank">View Paper</a></div>
+                        </li>
+                        <li>
+                            <div class="list-item-title">Best Paper Award</div>
+                            <div class="list-item-meta">European Conference on Computer Vision (ECCV) • Workshop • 2012</div>
+                            <div class="links"><a href="https://link.springer.com/chapter/10.1007/978-3-642-33885-4_56" class="award-link" target="_blank">View Paper</a></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Nese Alyuz Civitci. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
